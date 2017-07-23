@@ -1,0 +1,8 @@
+<template name="radioInput">
+  <div class="form-group has-feedback">
+    <p>{{placeHolder}}</p>
+  {{#each options}}
+    <label class="radio-inline"><input type="radio" name="{{../id}}" value="{{value}}">{{i18n label}}</label>
+  {{/each}}
+  </div>
+</template>

@@ -1,0 +1,18 @@
+<template name="layout">
+    <div class="container">
+    {{#unless Template.subscriptionsReady}}
+        {{> spinner}}
+    {{/unless}}
+    <div class="row">
+        <div class="col-lg-offset-3 col-xs-6">
+            <img src="/images/logo.png" width="20%" alt="Neo logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{> flashMessages}}
+            {{>yield 'content'}}
+        </div>
+    </div>
+    </div>
+</template>

@@ -1,0 +1,12 @@
+<template name="newQuestion">
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3">
+            {{>backButton}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            {{> quickForm collection="Phrases" id="newQuestion" type="insert"}}
+        </div>
+    </div>
+</template>
