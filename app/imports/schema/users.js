@@ -58,6 +58,10 @@ const UserPersonalInformation = new SimpleSchema({
     allowedValues: ['en', 'jp', 'ko'],
     defaultValue: 'en',
     optional: true
+  },
+  identity: {
+    type: Object,
+    optional: true
   }
 });
 

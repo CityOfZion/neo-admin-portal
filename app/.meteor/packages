@@ -25,7 +25,6 @@ meteorhacks:subs-manager
 aldeed:tabular
 themeteorchef:jquery-validation
 tsega:bootstrap3-datetimepicker
-mfactory:admin-lte
 jiku:bootstrap-toggle
 momentjs:moment
 jcbernack:reactive-aggregate
@@ -49,5 +48,13 @@ dburles:collection-helpers
 dynamic-import
 accounts-base
 accounts-oauth
-khamoud:accounts-slack
 accounts-ui-unstyled
+oauth2
+oauth
+service-configuration
+random
+underscore
+http
+less
+redaty:admin-lte
+twbs:bootstrap

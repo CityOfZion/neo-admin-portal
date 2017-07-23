@@ -9,6 +9,10 @@ html, body {
     color: #ffffff;
 }
 
+div.content-wrapper {
+    background-color: #222d32;
+}
+
 form {
     margin: 0;
 }

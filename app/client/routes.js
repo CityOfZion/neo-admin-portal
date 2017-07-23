@@ -18,8 +18,6 @@ Router.route('/portal/', {
     }
   },
   action: function(params, queryParams) {
-    this.render("layout");
-    this.render('login', {to: 'content'});
   }
 });
 
@@ -38,32 +36,17 @@ Router.route('/portal/login', {
   }
 });
 
-Router.route('/portal/register', {
-  name: "portal.register",
-  onBeforeAction() {
-    if(isAdmin() || isClient()) {
-      Router.go('portal.overview');
-    } else {
-      this.next();
-    }
-  },
-  action: function(params, queryParams) {
-    this.render("layout");
-    this.render('register', {to: 'content'});
-  }
-});
-
 Router.route('/portal/overview', {
   name: "portal.overview",
   onBeforeAction: function() {
-    if(!isAdmin()) {
+    if(!isAdmin() && !isClient()) {
       Router.go('portal.login');
     } else {
       this.next();
     }
   },
   action: function(params, queryParams) {
-    this.render("layout");
+    this.render("portalLayout");
     this.render('overview', {to: 'content'});
   }
 });
@@ -78,7 +61,7 @@ Router.route('/portal/phrases/list', {
     }
   },
   action() {
-    this.layout('layout');
+    this.layout('portalLayout');
     this.render("listQuestions", {to: 'content'});
   }
 });
@@ -94,7 +77,7 @@ Router.route('/portal/phrases/edit/:id', {
   },
   action(params, queryParams) {
     console.log(params, queryParams);
-    this.layout('layout');
+    this.layout('portalLayout');
     this.render("editQuestion", {to: 'content'});
   }
 });
@@ -110,7 +93,7 @@ Router.route('/portal/phrases/new', {
   },
   action(params, queryParams) {
     console.log(params, queryParams);
-    this.layout('layout');
+    this.layout('portalLayout');
     this.render("newQuestion", {to: 'content'});
   }
 });

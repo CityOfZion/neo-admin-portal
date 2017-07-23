@@ -64,7 +64,6 @@ jcbernack:reactive-aggregate@0.7.0
 jiku:bootstrap-toggle@0.0.1
 jquery@1.11.10
 jss:bootstrap-modal-prompt@0.1.2
-khamoud:accounts-slack@0.0.1
 launch-screen@1.1.1
 less@2.7.9
 livedata@1.0.18
@@ -78,7 +77,6 @@ meteorhacks:aggregate@1.3.0
 meteorhacks:collection-utils@1.2.0
 meteorhacks:subs-manager@1.6.4
 meteorspark:util@0.2.0
-mfactory:admin-lte@0.0.2
 minifier-css@1.2.16
 minifier-js@2.1.1
 minimongo@1.2.1
@@ -105,6 +103,7 @@ random@1.0.10
 rate-limit@1.0.8
 reactive-dict@1.1.9
 reactive-var@1.0.11
+redaty:admin-lte@0.0.5
 reload@1.1.11
 retry@1.0.9
 routepolicy@1.0.12

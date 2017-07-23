@@ -3,7 +3,7 @@ const isAdmin = () => {
 };
 
 const isClient = () => {
-  return (Meteor.userId() && Roles.userIsInRole(Meteor.userId(), ['client']));
+  return (Meteor.userId() && Roles.userIsInRole(Meteor.userId(), ['user']));
 };
 
 export { isAdmin, isClient };

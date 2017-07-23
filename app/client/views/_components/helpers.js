@@ -10,6 +10,10 @@ Template.registerHelper('paramUserId', function () {
   };
 });
 
+Template.registerHelper('hasRole', function(role) {
+  return Roles.userIsInRole(Meteor.userId(), role);
+});
+
 Template.registerHelper('isActiveMenuItem', function (route) {
   return Router.current().route.getName().indexOf(route) >= 0 ? 'active' : '';
 });

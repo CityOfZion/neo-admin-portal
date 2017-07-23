@@ -8,7 +8,7 @@ TemplateController('listQuestions', {
     'click .question'(e) {
       const id = $(e.currentTarget).data('id');
       console.log('ID', id, $(e.currentTarget));
-      Router.go('phrases.edit', {id: id});
+      Router.go('portal.phrases.edit', {id: id});
     },
     'click #newQuestion'() {
       console.log('new');
