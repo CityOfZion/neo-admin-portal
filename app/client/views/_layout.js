@@ -1,0 +1,2 @@
+TemplateController('layout', {
+});

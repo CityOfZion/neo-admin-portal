@@ -1,0 +1,10 @@
+<template name="selectInput">
+  <div class="form-group">
+    <label for="{{id}}">{{i18n 'global.language'}}:</label>
+    <select class="form-control" name="{{id}}" id="{{id}}">
+      {{#each options}}
+      <option value="{{value}}">{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+</template>

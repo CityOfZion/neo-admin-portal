@@ -1,0 +1,88 @@
+@font-face {
+    font-family: JosefinSans;
+    src: url('/fonts/JosefinSans-Regular.ttf');
+}
+
+html, body {
+    font-family: JosefinSans;
+    background-color: #0C0F13;
+    color: #ffffff;
+}
+
+form {
+    margin: 0;
+}
+div.row {
+    margin-top: 5px;
+}
+
+button.search {
+    background-color: #8FD700;
+    color: #0C0F13;
+    border-color: #0C0F13;
+}
+
+button.search:hover {
+    background-color: #58BF00;
+    color: #0C0F13;
+    border-color: #0C0F13;
+}
+
+div.answer {
+    background-color: #ffffff;
+    margin: 0;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 16pt;
+    word-wrap: break-word;
+    color: #0C0F13;
+    border-radius: 4px;
+}
+
+.margin-2 {
+    margin: 2px;
+}
+
+.margin-4 {
+    margin: 4px;
+}
+
+.margin-6 {
+    margin: 6px;
+}
+
+.margin-8 {
+    margin: 8px;
+}
+
+.margin-top-2 {
+    margin-top: 2px;
+}
+
+.margin-top-4 {
+    margin-top: 4px;
+}
+
+.margin-top-6 {
+    margin-top: 6px;
+}
+
+.margin-top-8 {
+    margin-top: 8px;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2px;
+}
+
+.margin-bottom-4 {
+    margin-bottom: 4px;
+}
+
+.margin-bottom-6 {
+    margin-bottom: 6px;
+}
+
+.margin-bottom-8 {
+    margin-bottom: 8px;
+}

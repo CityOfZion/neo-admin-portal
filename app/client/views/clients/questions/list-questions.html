@@ -1,0 +1,16 @@
+<template name="listQuestions">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            {{> button id="newQuestion" type="button" btnClass="btn-success" label="Enter new question"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="list-group">
+                {{#each questions}}
+                    <button type="button" class="question list-group-item" data-id="{{_id}}">{{skill}}</button>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,27 @@
+<template name="clientMenu">
+  <ul class="sidebar-menu">
+    <li class="header">MAIN NAVIGATION</li>
+    <li class="{{isActiveMenuItem 'client.dashboard'}}">
+      <a href="{{pathFor route='client.dashboard'}}">
+        <i class="fa fa-dashboard"></i> <span>{{i18n 'admin.menu.dashboard'}}</span>
+      </a>
+    </li>
+    <li class="treeview {{isActiveMenuItem 'client.customers'}}">
+      <a href="#">
+        <i class="fa fa-users"></i> <span>{{i18n 'admin.menu.customers'}}</span>
+        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+      </a>
+      <ul class="treeview-menu {{isOpenMenuItem 'client.customers'}}">
+        <li class="{{isActiveMenuItem 'client.customers.overview'}}"><a href="{{pathFor route='client.customers.overview'}}"><i class="fa fa-circle-o"></i> {{i18n 'admin.menu.overview'}}</a></li>
+        <li class="{{isActiveMenuItem 'client.customers.fields'}}"><a href="{{pathFor route='client.customers.fields'}}"><i class="fa fa-circle-o"></i> {{i18n 'admin.menu.registrationFields'}}</a></li>
+      </ul>
+    </li>
+    <li class="{{isActiveMenuItem 'client.store.overview'}}">
+      <a href="{{pathFor route='client.store.overview'}}">
+        <i class="fa fa-shopping-cart"></i> <span>{{i18n 'admin.menu.store'}}</span>
+      </a>
+    </li>
+  </ul>
+</template>
