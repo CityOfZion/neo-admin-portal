@@ -1,0 +1,43 @@
+<template name="requestInvite">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Request invite
+        </div>
+        <div class="panel-body">
+            {{#if currentUser.profile.updatedProfile}}
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3 text-center">
+                        {{#each groupList}}
+                            {{#unless hasInvite}}
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        {{name}}
+                                    </div>
+                                    <div class="panel-body">
+                                        <p class="word-break">{{topic.value}}</p>
+                                        <div class="form-group">
+                                            <label class="control-label">Give us your reason (required)</label>
+                                            <textarea data-id="{{id}}" class="form-control" placeholder="Give us your reason here"></textarea>
+                                            <button data-id="{{id}}" data-object="{{@index}}" class="btn btn-primary request">Request invite</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/unless}}
+                        {{/each}}
+                    </div>
+                </div>
+            {{else}}
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        To allow for registration we will need some information. <br/>
+                        Please update your profile to register as a developer.
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <a class="btn btn-warning" href="{{pathFor route="portal.account.edit"}}">Edit Account</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

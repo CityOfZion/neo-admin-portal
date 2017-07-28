@@ -64,6 +64,7 @@ jcbernack:reactive-aggregate@0.7.0
 jiku:bootstrap-toggle@0.0.1
 jquery@1.11.10
 jss:bootstrap-modal-prompt@0.1.2
+khamoud:slack-api@0.0.2
 launch-screen@1.1.1
 less@2.7.9
 livedata@1.0.18

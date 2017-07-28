@@ -6,7 +6,8 @@ if(Meteor.isServer) {
   OAuth.registerService('slack', 2, null, function (query) {
     const accessToken = getAccessToken(query);
     const identity = getIdentity(accessToken);
-    console.log('IDENTITY', identity);
+    const userInfo = getUserInfo(accessToken);
+    console.log('IDENTITY', userInfo);
     
     return {
       serviceData: {
@@ -16,7 +17,8 @@ if(Meteor.isServer) {
       options: {
         profile: {
           name: identity.user.name,
-          identity: identity
+          identity: identity,
+          info: userInfo
         }
       }
     };
@@ -38,7 +40,6 @@ if(Meteor.isServer) {
             code: query.code,
             client_id: config.clientId,
             client_secret: OAuth.openSecret(config.secret),
-            //        redirect_uri: Meteor.absoluteUrl("_oauth/slack?close")
             redirect_uri: query.redirectUri ? query.redirectUri : OAuth._redirectUri('slack', config),
             state: query.state
           }
@@ -52,6 +53,19 @@ if(Meteor.isServer) {
       throw new Error("Failed to complete OAuth handshake with Slack. " + response.data.error);
     } else {
       return response.data.access_token;
+    }
+  };
+  
+  const getUserInfo = function (accessToken) {
+    try {
+      const response = HTTP.get(
+        "https://slack.com/api/auth.test",
+        {params: {token: accessToken}});
+      
+      return response.data.ok && response.data;
+    } catch (err) {
+      throw _.extend(new Error("Failed to fetch info from Slack. " + err.message),
+        {response: err.response});
     }
   };
   

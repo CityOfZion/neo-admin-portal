@@ -6,5 +6,4 @@ if(Meteor.isServer) {
   });
 }
 
-
-// Meteor.users.attachSchema(userSchema);
+Meteor.users.attachSchema(userSchema);
