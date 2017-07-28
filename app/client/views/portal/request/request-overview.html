@@ -11,16 +11,26 @@
                         <th>Group</th>
                         <th>Reason</th>
                         <th>Date</th>
+                        <th>Approved</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{#each invites}}
-                        <tr class="{{processWarning this}}">
-                            <td>{{group.name}}</td>
-                            <td>{{reason}}</td>
-                            <td>{{date dateRequested}}</td>
+                    {{#if hasInvites}}
+                        {{#each invites}}
+                            <tr class="{{processWarning this}}">
+                                <td>{{group.name}}</td>
+                                <td>{{reason}}</td>
+                                <td>{{date dateRequested}}</td>
+                                <td>{{isApproved approved}}</td>
+                            </tr>
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <td colspan="4">
+                                There are no invites pending
+                            </td>
                         </tr>
-                    {{/each}}
+                    {{/if}}
                     </tbody>
                 </table>
             {{else}}

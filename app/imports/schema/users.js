@@ -14,6 +14,16 @@ const userSchema = new SimpleSchema({
     type: Object,
     optional: true,
     blackbox: true
+  },
+  identity: {
+    type: Object,
+    optional: true,
+    blackbox: true
+  },
+  info: {
+    type: Object,
+    optional: true,
+    blackbox: true
   }
 });
 

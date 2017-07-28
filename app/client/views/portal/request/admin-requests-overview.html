@@ -1,0 +1,37 @@
+<template name="adminRequestsOverview">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Invite requests overview
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Slack username</th>
+                    <th>GitHub username</th>
+                    <th>Group</th>
+                    <th>Reason</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each invites}}
+                    <tr>
+                        <td>{{user.profile.name}}</td>
+                        <td>{{user.profile.githubUsername}}</td>
+                        <td>{{group.name}}</td>
+                        <td>{{reason}}</td>
+                        <td>{{date dateRequested}}</td>
+                        <td>
+                            <button data-group="{{group.id}}" data-user="{{user.profile.identity.user.id}}" class="btn btn-primary profile">View profile</button>
+                            <button data-group="{{group.id}}" data-user="{{user.profile.identity.user.id}}" class="btn btn-success approve">Approve</button>
+                            <button data-group="{{group.id}}" data-user="{{user.profile.identity.user.id}}" class="btn btn-danger reject">Reject</button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

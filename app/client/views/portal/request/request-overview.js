@@ -9,7 +9,15 @@ TemplateController('requestOverview', {
       return Invites.find({});
     },
     processWarning(invite) {
-      return invite.processed ? 'success' : 'danger';
+      return invite.approved ? 'success' : 'danger';
+    },
+    isApproved(approved) {
+      return approved ? 'yes' : 'no';
+    },
+    hasInvites() {
+      const invites = Invites.find({}).count();
+      console.log(invites, !!invites);
+      return invites;
     }
   }
 });

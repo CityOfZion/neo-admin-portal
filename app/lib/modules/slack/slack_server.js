@@ -7,7 +7,6 @@ if(Meteor.isServer) {
     const accessToken = getAccessToken(query);
     const identity = getIdentity(accessToken);
     const userInfo = getUserInfo(accessToken);
-    console.log('IDENTITY', userInfo);
     
     return {
       serviceData: {

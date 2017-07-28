@@ -23,5 +23,10 @@ export default new SimpleSchema({
     type: Boolean,
     label: 'Processed',
     defaultValue: false
+  },
+  approved: {
+    type: Boolean,
+    label: 'Approved',
+    defaultValue: false
   }
 });

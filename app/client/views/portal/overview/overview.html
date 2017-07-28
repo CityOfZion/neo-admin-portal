@@ -1,3 +1,64 @@
 <template name="overview">
-
+    <div class="row">
+        {{#unless profileUpdated}}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fa fa-user-circle-o"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Profile Status</span>
+                        <span class="info-box-number"><small>Your profile hasn't been updated yet. Make sure to update your account details if you want to register as a developer</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+        {{/unless}}
+        {{#unless hasRole 'admin'}}
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Pending invites</span>
+                        <span class="info-box-number"><small>{{invitesPending}}</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Successful invites</span>
+                        <span class="info-box-number"><small>{{invitesSucceeded}}</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-orange"><i class="fa fa-envelope-o"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Rejected invites</span>
+                        <span class="info-box-number"><small>{{invitesRejected}}</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+        {{/unless}}
+    </div>
 </template>

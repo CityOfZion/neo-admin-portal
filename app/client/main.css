@@ -21,6 +21,10 @@ div.alert {
     z-index: 5000;
 }
 
+.info-box {
+    color: #000000;
+}
+
 .word-break {
     word-break: break-all;
 }
