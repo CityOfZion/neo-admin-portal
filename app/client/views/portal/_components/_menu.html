@@ -55,6 +55,17 @@
                 {{#if hasRole 'admin'}}
                     <li class="treeview active">
                         <a href="#">
+                            <i class="fa fa-user"></i> <span>Developers</span>
+                            <span class="pull-right-container">
+                                  <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{pathFor route="portal.requests"}}"><i class="fa fa-list"></i> View invite requests</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview active">
+                        <a href="#">
                             <i class="fa fa-edit"></i> <span>Phrases</span>
                             <span class="pull-right-container">
                               <i class="fa fa-angle-left pull-right"></i>

@@ -11,6 +11,12 @@
 
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+                <div class="col-lg-12 margin-bottom-4">
+                    <button id="back" class="btn btn-warning pull-left" onclick="history.go(-1)">Back</button>
+                    <button id="next" class="btn btn-success pull-right" onclick="history.go(1)">Next</button>
+                </div>
+            </div>
             <!-- Info boxes -->
             {{> yield 'content'}}
         </section>

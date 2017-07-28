@@ -2,10 +2,10 @@ TemplateController('portalLayout', {
   onRendered() {
     FlashMessages.configure({
       autoHide: true,
-      hideDelay: 2000,
+      hideDelay: 5000,
       autoScroll: true
     });
-    AutoForm.setDefaultTemplate('bootstrap3-horizontal');
+    AutoForm.setDefaultTemplate('bootstrap3');
   },
   events: {
     'click .sign-out'() {

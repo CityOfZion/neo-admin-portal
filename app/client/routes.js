@@ -1,5 +1,9 @@
 import checkRole from '/imports/helpers/check-role.js';
 
+Router.configure({
+  loadingTemplate: 'loading'
+});
+
 // Initial route for letting customers subscribe to a client's page
 Router.route('/', {
   name: "home",
@@ -12,6 +16,9 @@ Router.route('/', {
 Router.route('/portal/', {
   name: "portal",
   title: "Portal",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction() {
     if(checkRole('user|developer|admin')) {
       Router.go('portal.overview');
@@ -25,6 +32,10 @@ Router.route('/portal/', {
 
 Router.route('/portal/login', {
   name: "portal.login",
+  title: "Login",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction() {
     if(checkRole('user|developer|admin')) {
       Router.go('portal.overview');
@@ -41,6 +52,9 @@ Router.route('/portal/login', {
 Router.route('/portal/overview', {
   name: "portal.overview",
   title: "Overview",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('user|developer|admin')) {
       Router.go('portal.login');
@@ -60,6 +74,9 @@ Router.route('/portal/overview', {
 Router.route('/portal/phrases', {
   name: "portal.phrases",
   title: "Phrases overview",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('admin')) {
       Router.go('portal.login');
@@ -76,6 +93,9 @@ Router.route('/portal/phrases', {
 Router.route('/portal/phrases/edit/:id', {
   name: "portal.phrases.edit",
   title: "Edit phrase",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('admin')) {
       Router.go('portal.login');
@@ -92,6 +112,9 @@ Router.route('/portal/phrases/edit/:id', {
 Router.route('/portal/phrases/new', {
   name: "portal.phrases.new",
   title: "New phrase",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('admin')) {
       Router.go('portal.login');
@@ -108,9 +131,31 @@ Router.route('/portal/phrases/new', {
 /**
  * Slack request invite
  */
+Router.route('/portal/requests', {
+  name: "portal.requests",
+  title: "Invite requests",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
+  onBeforeAction: function() {
+    if (!checkRole('admin')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("adminRequestsOverview", {to: 'content'});
+  }
+});
+
 Router.route('/portal/request', {
   name: "portal.request",
   title: "Requests",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if (!checkRole('user|developer')) {
       Router.go('portal.login');
@@ -127,6 +172,9 @@ Router.route('/portal/request', {
 Router.route('/portal/request/invite', {
   name: "portal.request.invite",
   title: "Request invite",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if (!checkRole('user|developer')) {
       Router.go('portal.login');
@@ -146,6 +194,9 @@ Router.route('/portal/request/invite', {
 Router.route('/portal/account/edit', {
   name: "portal.account.edit",
   title: "Edit account",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('user|developer|admin')) {
       Router.go('portal.login');
@@ -163,6 +214,9 @@ Router.route('/portal/account/edit', {
 Router.route('/portal/account', {
   name: "portal.account",
   title: "Account overview",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
   onBeforeAction: function() {
     if(!checkRole('user|developer|admin')) {
       Router.go('portal.login');
@@ -173,5 +227,24 @@ Router.route('/portal/account', {
   action() {
     this.layout('portalLayout');
     this.render("accountOverview", {to: 'content'});
+  }
+});
+
+Router.route('/portal/account/view/:id', {
+  name: "portal.account.view",
+  title: "Account view",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
+  onBeforeAction: function() {
+    if(!checkRole('user|developer|admin')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("accountView", {to: 'content'});
   }
 });

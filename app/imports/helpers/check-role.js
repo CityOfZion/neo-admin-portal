@@ -1,11 +1,13 @@
 export default (role) => {
   const roles = role.split('|');
+  
   if(Meteor.userId() && Meteor.user()) {
-    for(let i = 0; i < roles.length; i++) {
-      if(Roles.userIsInRole(Meteor.userId(), roles[i])) {
-        return true;
-      }
+    const userRoles = Meteor.user().roles;
+    if(!!userRoles) {
+      const role = Meteor.user().roles[0];
+      return roles.indexOf(role) > -1;
     }
   }
+  
   return false;
 }
