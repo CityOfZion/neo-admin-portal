@@ -1,3 +1,5 @@
+import checkRole from '/imports/helpers/check-role.js';
+
 Template.registerHelper('arrayify', function (obj) {
   let result = [];
   for (let key in obj) result.push({name: key, value: obj[key]});
@@ -11,7 +13,7 @@ Template.registerHelper('paramUserId', function () {
 });
 
 Template.registerHelper('hasRole', function(role) {
-  return Roles.userIsInRole(Meteor.userId(), role);
+  return checkRole(role);
 });
 
 Template.registerHelper('isActiveMenuItem', function (route) {
@@ -26,18 +28,11 @@ Template.registerHelper('getCurrencySymbol', function (shortCode) {
   return i18n('global.currencies.' + shortCode);
 });
 
-Template.registerHelper('User', function () {
-  console.log(Meteor.user());
-  return Meteor.user();
-});
-
 Template.registerHelper('UserEmail', function () {
   return Meteor.user().emails[0].address;
 });
 
 Template.registerHelper('date', function (dateString = false) {
-  console.log('date', moment());
-  console.log('date', moment().format(i18n('format.date')));
   return (!dateString) ? moment().format(i18n('format.date')) : moment(dateString).format(i18n('format.date'));
 });
 
@@ -46,12 +41,10 @@ Template.registerHelper('yearsList', (count, from) => {
     from = new Date().getFullYear();
   }
   
-  console.log('from', from);
   const years = [];
   for (let y = from; y <= from + count; y++) {
     years.push(y);
   }
-  console.log('years', years);
   return years;
 });
 

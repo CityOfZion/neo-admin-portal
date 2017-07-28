@@ -5,7 +5,7 @@
             <!-- Sidebar user panel -->
             {{> portalUserPanel}}
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
+            <form action="#" class="sidebar-form">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
@@ -24,8 +24,36 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
+                {{#if hasRole 'user|developer|admin'}}
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>Account</span>
+                            <span class="pull-right-container">
+                                  <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{pathFor route="portal.account"}}"><i class="fa fa-user"></i> View</a></li>
+                            <li><a href="{{pathFor route="portal.account.edit"}}"><i class="fa fa-pencil"></i> Edit</a></li>
+                        </ul>
+                    </li>
+                {{/if}}
+                {{#if hasRole 'user|developer'}}
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>Developers</span>
+                            <span class="pull-right-container">
+                                  <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{pathFor route="portal.request"}}"><i class="fa fa-list"></i> View requests</a></li>
+                            <li><a href="{{pathFor route="portal.request.invite"}}"><i class="fa fa-envelope"></i> Request invite</a></li>
+                        </ul>
+                    </li>
+                {{/if}}
                 {{#if hasRole 'admin'}}
-                    <li class="treeview">
+                    <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Phrases</span>
                             <span class="pull-right-container">
@@ -33,7 +61,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{pathFor route="portal.phrases.list"}}"><i class="fa fa-list"></i> List</a></li>
+                            <li><a href="{{pathFor route="portal.phrases"}}"><i class="fa fa-list"></i> Overview</a></li>
                             <li><a href="{{pathFor route="portal.phrases.new"}}"><i class="fa fa-plus-circle"></i> New</a></li>
                         </ul>
                     </li>

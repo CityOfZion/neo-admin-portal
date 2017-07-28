@@ -1,6 +1,6 @@
 i18n.map('en', {
   format: {
-    date: 'MM/DD/YYYY'
+    date: 'YYYY/MM/DD'
   }
 });
 
