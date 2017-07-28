@@ -1,4 +1,5 @@
-import {isAdmin, isClient} from '/imports/helpers/accounts.js';
+import checkRole from '/imports/helpers/check-role.js';
+
 // Initial route for letting customers subscribe to a client's page
 Router.route('/', {
   name: "home",
@@ -9,9 +10,10 @@ Router.route('/', {
 });
 
 Router.route('/portal/', {
-  name: "portal.landing",
+  name: "portal",
+  title: "Portal",
   onBeforeAction() {
-    if(isAdmin() || isClient()) {
+    if(checkRole('user|developer|admin')) {
       Router.go('portal.overview');
     } else {
       Router.go('portal.login');
@@ -24,7 +26,7 @@ Router.route('/portal/', {
 Router.route('/portal/login', {
   name: "portal.login",
   onBeforeAction() {
-    if(isAdmin() || isClient()) {
+    if(checkRole('user|developer|admin')) {
       Router.go('portal.overview');
     } else {
       this.next();
@@ -38,8 +40,9 @@ Router.route('/portal/login', {
 
 Router.route('/portal/overview', {
   name: "portal.overview",
+  title: "Overview",
   onBeforeAction: function() {
-    if(!isAdmin() && !isClient()) {
+    if(!checkRole('user|developer|admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -51,10 +54,14 @@ Router.route('/portal/overview', {
   }
 });
 
-Router.route('/portal/phrases/list', {
-  name: "portal.phrases.list",
+/**
+ * Phrases routes
+ */
+Router.route('/portal/phrases', {
+  name: "portal.phrases",
+  title: "Phrases overview",
   onBeforeAction: function() {
-    if(!isAdmin()) {
+    if(!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -68,15 +75,15 @@ Router.route('/portal/phrases/list', {
 
 Router.route('/portal/phrases/edit/:id', {
   name: "portal.phrases.edit",
+  title: "Edit phrase",
   onBeforeAction: function() {
-    if(!isAdmin()) {
+    if(!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
     }
   },
   action(params, queryParams) {
-    console.log(params, queryParams);
     this.layout('portalLayout');
     this.render("editQuestion", {to: 'content'});
   }
@@ -84,16 +91,87 @@ Router.route('/portal/phrases/edit/:id', {
 
 Router.route('/portal/phrases/new', {
   name: "portal.phrases.new",
+  title: "New phrase",
   onBeforeAction: function() {
-    if(!isAdmin()) {
+    if(!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
     }
   },
   action(params, queryParams) {
-    console.log(params, queryParams);
     this.layout('portalLayout');
     this.render("newQuestion", {to: 'content'});
+  }
+});
+
+/**
+ * Slack request invite
+ */
+Router.route('/portal/request', {
+  name: "portal.request",
+  title: "Requests",
+  onBeforeAction: function() {
+    if (!checkRole('user|developer')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("requestOverview", {to: 'content'});
+  }
+});
+
+Router.route('/portal/request/invite', {
+  name: "portal.request.invite",
+  title: "Request invite",
+  onBeforeAction: function() {
+    if (!checkRole('user|developer')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("requestInvite", {to: 'content'});
+  }
+});
+
+/**
+ * Account details
+ */
+Router.route('/portal/account/edit', {
+  name: "portal.account.edit",
+  title: "Edit account",
+  onBeforeAction: function() {
+    if(!checkRole('user|developer|admin')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    
+    this.render("accountEdit", {to: 'content'});
+  }
+});
+
+Router.route('/portal/account', {
+  name: "portal.account",
+  title: "Account overview",
+  onBeforeAction: function() {
+    if(!checkRole('user|developer|admin')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("accountOverview", {to: 'content'});
   }
 });

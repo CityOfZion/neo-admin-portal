@@ -1,0 +1,40 @@
+<template name="requestOverview">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Requests overview
+        </div>
+        <div class="panel-body">
+            {{#if currentUser.profile.updatedProfile}}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Reason</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each invites}}
+                        <tr class="{{processWarning this}}">
+                            <td>{{group.name}}</td>
+                            <td>{{reason}}</td>
+                            <td>{{date dateRequested}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        To allow for registration we will need some information. <br/>
+                        Please update your profile to register as a developer.
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <a class="btn btn-warning" href="{{pathFor route="portal.account.edit"}}">Edit Account</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

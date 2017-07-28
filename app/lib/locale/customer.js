@@ -1,4 +1,3 @@
-console.log('1');
 i18n.map('en', {
   customer: {
     customerId: "Customer ID",

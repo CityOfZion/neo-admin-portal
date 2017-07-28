@@ -9,6 +9,30 @@ html, body {
     color: #ffffff;
 }
 
+ol.breadcrumb {
+    background-color: #d2d6de !important;
+    color: #777777 !important;
+}
+
+div.alert {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5000;
+}
+
+.word-break {
+    word-break: break-all;
+}
+
+p.form-control-static {
+    padding-top: 0;
+}
+
+.content-header>.breadcrumb li:before {
+    color: #97a0b3 !important;
+}
+
 div.content-wrapper {
     background-color: #222d32;
 }
@@ -16,6 +40,11 @@ div.content-wrapper {
 form {
     margin: 0;
 }
+
+.panel {
+    color: #000000 !important;
+}
+
 div.row {
     margin-top: 5px;
 }

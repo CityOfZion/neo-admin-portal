@@ -1,11 +1,9 @@
 <template name="newQuestion">
-    <div class="row">
-        <div class="col-lg-3 col-lg-offset-3">
-            {{>backButton}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">New question</h3>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel-body">
             {{> quickForm collection="Phrases" id="newQuestion" type="insert"}}
         </div>
     </div>
