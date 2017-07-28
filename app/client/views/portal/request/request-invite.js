@@ -1,6 +1,7 @@
 TemplateController('requestInvite', {
   state: {
-    groups: false
+    groups: false,
+    hasGroups: false
   },
   onCreated() {
     Meteor.call('getGroupsList', (err, res) => {
@@ -16,22 +17,26 @@ TemplateController('requestInvite', {
     groupList() {
       const invites = Invites.find({"user._id": Meteor.userId()}).fetch();
       const groups = this.state.groups;
-      const outGroups = [];
+      let count = 0;
       if(groups !== false) {
         this.state.groups.forEach((group, index) => {
           group.hasInvite = false;
           invites.forEach((invite) => {
             if(invite.group.id === group.id) {
               group.hasInvite = true;
+              count++;
             }
           });
         });
       }
-      
+      this.state.hasGroups = !!count;
       return groups;
     },
     hasUpdated() {
       return !!Meteor.user().profile.updatedProfile;
+    },
+    hasInvite() {
+      return this.state.hasGroups;
     }
   },
   events: {
