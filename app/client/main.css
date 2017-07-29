@@ -53,6 +53,12 @@ div.row {
     margin-top: 5px;
 }
 
+.neo-svg-icon {
+    background: url('/images/icon.svg') no-repeat center;
+    height: 100%;
+    width: 100%;
+}
+
 button.search {
     background-color: #8FD700;
     color: #0C0F13;

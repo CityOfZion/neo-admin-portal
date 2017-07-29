@@ -6,6 +6,7 @@ TemplateController('portalLayout', {
       autoScroll: true
     });
     AutoForm.setDefaultTemplate('bootstrap3');
+    window.document.title = 'NEO Portal - ' + Router.current().options.route.options.title;
   },
   events: {
     'click .sign-out'() {
@@ -15,10 +16,12 @@ TemplateController('portalLayout', {
     },
     'click .sidebar-toggle'() {
       const skin = $('.skin-black');
-      if(skin.hasClass('sidebar-collapse')) {
-        skin.removeClass('sidebar-collapse');
+      if(skin.hasClass('sidebar-open')) {
+        skin.removeClass('sidebar-open');
+        $('body').removeClass('sidebar-open');
       } else {
-        skin.addClass('sidebar-mini sidebar-collapse');
+        skin.addClass('sidebar-mini sidebar-open');
+        $('body').addClass('sidebar-mini sidebar-open');
       }
     }
   }

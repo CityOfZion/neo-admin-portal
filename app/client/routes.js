@@ -248,3 +248,26 @@ Router.route('/portal/account/view/:id', {
     this.render("accountView", {to: 'content'});
   }
 });
+
+/**
+ * Bot
+ */
+
+Router.route('/portal/bot', {
+  name: "portal.bot",
+  title: "Bot overview",
+  waitOn: function() {
+    return Meteor.subscribe('loggedInUser');
+  },
+  onBeforeAction: function() {
+    if(!checkRole('admin')) {
+      Router.go('portal.login');
+    } else {
+      this.next();
+    }
+  },
+  action() {
+    this.layout('portalLayout');
+    this.render("botOverview", {to: 'content'});
+  }
+});
