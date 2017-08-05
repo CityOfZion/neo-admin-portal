@@ -27,9 +27,9 @@
 - [ ] Admin portal interface NEO style
 
 ### Version 0.2
-- [ ] Slack invite management
-- [ ] User profile management
-- [ ] Bot status page
+- [x] Slack invite management
+- [x] User profile management
+- [x] Bot status page
 
 ### Version 0.3
 - [ ] Suspicious user management (find bots/spammers/etc)
