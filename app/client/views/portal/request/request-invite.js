@@ -15,7 +15,7 @@ TemplateController('requestInvite', {
   },
   helpers: {
     groupList() {
-      const invites = Invites.find({"user._id": Meteor.userId()}).fetch();
+      const invites = Invites.find({"user": Meteor.userId()}).fetch();
       const groups = this.state.groups;
       let count = 0;
       if(groups !== false) {

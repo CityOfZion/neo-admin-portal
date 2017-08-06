@@ -9,6 +9,10 @@ html, body {
     color: #ffffff;
 }
 
+.info-box-number {
+    line-height: 1em;
+}
+
 ol.breadcrumb {
     background-color: #d2d6de !important;
     color: #777777 !important;

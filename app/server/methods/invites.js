@@ -6,7 +6,7 @@ Meteor.methods({
     console.log('inviteExists', inviteExists);
     if(!inviteExists) {
       return Invites.insert({
-        user: Meteor.user(),
+        user: Meteor.userId(),
         reason: reason,
         group: group,
         dateRequested: new Date()

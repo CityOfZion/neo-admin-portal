@@ -8,8 +8,11 @@
     "autolinker": "^1.4.3",
     "babel-runtime": "6.18.0",
     "bcrypt": "^1.0.2",
+    "currency-formatter": "^1.2.1",
+    "git-clone": "^0.1.0",
     "jquery-serializejson": "^2.8.1",
     "meteor-node-stubs": "~0.2.0",
+    "path": "^0.12.7",
     "simpl-schema": "^0.1.0",
     "stripe": "^4.15.1"
   }

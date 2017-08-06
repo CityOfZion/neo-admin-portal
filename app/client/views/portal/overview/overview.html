@@ -1,19 +1,45 @@
 <template name="overview">
     <div class="row">
         {{#if profileUpdated}}
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-black"><i class="fa neo-svg-icon"></i></span>
+                    <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Your wallet</span>
                         <span class="info-box-number">
-                            <small>NEO <span style="font-weight: normal">({{walletAmount.NEO.balance}})</span></small><br />
-                            <small>GAS <span style="font-weight: normal">({{walletAmount.GAS.balance}})</span></small>
+                            <small>NEO <span style="font-weight: normal">({{walletAmount.NEO.balance}})({{usdNeoPrice walletAmount.NEO.balance}})</span></small><br />
+                            <small>GAS <span style="font-weight: normal">({{walletAmount.GAS.balance}})({{usdGasPrice walletAmount.GAS.balance}})</span></small>
                         </span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-black"><i class="fa neo-svg-icon"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Market NEO</span>
+                        <span class="info-box-number">
+                            <small>PRICE USD: <span style="font-weight: normal">{{currency neoPrice.price_usd}}</span></small><br />
+                            <small>VOLUME 24H: <span style="font-weight: normal">{{neoPrice.[24h_volume_usd]}}</span></small><br />
+                            <small>CHANGE 24H: <span style="font-weight: normal">{{neoPrice.percent_change_24h}}%</span></small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-black"><i class="fa neo-svg-icon"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Market GAS</span>
+                        <span class="info-box-number">
+                            <small>PRICE USD: <span style="font-weight: normal">{{currency gasPrice.price_usd}}</span></small><br />
+                            <small>VOLUME 24H: <span style="font-weight: normal">{{gasPrice.[24h_volume_usd]}}</span></small><br />
+                            <small>CHANGE 24H: <span style="font-weight: normal">{{gasPrice.percent_change_24h}}%</span></small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
                     <div class="info-box-content">
@@ -22,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
                     <div class="info-box-content">
@@ -31,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-orange"><i class="fa fa-envelope-o"></i></span>
                     <div class="info-box-content">
@@ -43,7 +69,7 @@
         {{/if}}
         {{#unless hasRole 'admin'}}
             {{#unless profileUpdated}}
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="info-box">
                         <span class="info-box-icon bg-red"><i class="fa fa-user-circle-o"></i></span>
                         <div class="info-box-content">

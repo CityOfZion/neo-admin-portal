@@ -1,5 +1,7 @@
+import checkRole from '/imports/helpers/check-role.js';
+
 Meteor.publish('invites', function() {
-  return Invites.find({"user._id": this.userId});
+  return Invites.find({"user": this.userId});
 });
 
 Meteor.publish('allUnprocessedInvites', function() {
@@ -7,7 +9,7 @@ Meteor.publish('allUnprocessedInvites', function() {
 });
 
 Meteor.publish('allInvites', function() {
-  const invites = Invites.find({});
-  console.log('invites', invites.count());
-  return invites;
+  if (checkRole('admin')) {
+    return Invites.find({});
+  }
 });

@@ -16,34 +16,34 @@ Router.route('/', {
 Router.route('/portal/', {
   name: "portal",
   title: "Portal",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
   onBeforeAction() {
-    if(checkRole('user|developer|admin')) {
+    if (checkRole('user|developer|admin')) {
       Router.go('portal.overview');
     } else {
       Router.go('portal.login');
     }
   },
-  action: function(params, queryParams) {
+  action: function (params, queryParams) {
   }
 });
 
 Router.route('/portal/login', {
   name: "portal.login",
   title: "Login",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
   onBeforeAction() {
-    if(checkRole('user|developer|admin')) {
+    if (checkRole('user|developer|admin')) {
       Router.go('portal.overview');
     } else {
       this.next();
     }
   },
-  action: function(params, queryParams) {
+  action: function (params, queryParams) {
     this.render("layout");
     this.render('login', {to: 'content'});
   }
@@ -52,17 +52,17 @@ Router.route('/portal/login', {
 Router.route('/portal/overview', {
   name: "portal.overview",
   title: "Overview",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('user|developer|admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('user|developer|admin')) {
       Router.go('portal.login');
     } else {
       this.next();
     }
   },
-  action: function(params, queryParams) {
+  action: function (params, queryParams) {
     this.render("portalLayout");
     this.render('overview', {to: 'content'});
   }
@@ -74,11 +74,11 @@ Router.route('/portal/overview', {
 Router.route('/portal/phrases', {
   name: "portal.phrases",
   title: "Phrases overview",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -93,11 +93,11 @@ Router.route('/portal/phrases', {
 Router.route('/portal/phrases/edit/:id', {
   name: "portal.phrases.edit",
   title: "Edit phrase",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -112,11 +112,11 @@ Router.route('/portal/phrases/edit/:id', {
 Router.route('/portal/phrases/new', {
   name: "portal.phrases.new",
   title: "New phrase",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -134,10 +134,10 @@ Router.route('/portal/phrases/new', {
 Router.route('/portal/requests', {
   name: "portal.requests",
   title: "Invite requests",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
+  onBeforeAction: function () {
     if (!checkRole('admin')) {
       Router.go('portal.login');
     } else {
@@ -153,10 +153,10 @@ Router.route('/portal/requests', {
 Router.route('/portal/request', {
   name: "portal.request",
   title: "Requests",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
+  onBeforeAction: function () {
     if (!checkRole('user|developer')) {
       Router.go('portal.login');
     } else {
@@ -172,10 +172,10 @@ Router.route('/portal/request', {
 Router.route('/portal/request/invite', {
   name: "portal.request.invite",
   title: "Request invite",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
+  onBeforeAction: function () {
     if (!checkRole('user|developer')) {
       Router.go('portal.login');
     } else {
@@ -194,11 +194,11 @@ Router.route('/portal/request/invite', {
 Router.route('/portal/account/edit', {
   name: "portal.account.edit",
   title: "Edit account",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('user|developer|admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('user|developer|admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -214,11 +214,11 @@ Router.route('/portal/account/edit', {
 Router.route('/portal/account', {
   name: "portal.account",
   title: "Account overview",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('user|developer|admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('user|developer|admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -233,11 +233,11 @@ Router.route('/portal/account', {
 Router.route('/portal/account/view/:id', {
   name: "portal.account.view",
   title: "Account view",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('user|developer|admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('user|developer|admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -256,11 +256,11 @@ Router.route('/portal/account/view/:id', {
 Router.route('/portal/bot', {
   name: "portal.bot",
   title: "Bot overview",
-  waitOn: function() {
+  waitOn: function () {
     return Meteor.subscribe('loggedInUser');
   },
-  onBeforeAction: function() {
-    if(!checkRole('admin')) {
+  onBeforeAction: function () {
+    if (!checkRole('admin')) {
       Router.go('portal.login');
     } else {
       this.next();
@@ -270,4 +270,29 @@ Router.route('/portal/bot', {
     this.layout('portalLayout');
     this.render("botOverview", {to: 'content'});
   }
+});
+
+/**
+ * Slack oauth
+ */
+Router.route('/portal/_slack/oauth',
+  {
+    name: "slack.oauth",
+    action() {
+      import('/imports/slack/slack-functions.js').then(slackApi => {
+        const access = slackApi.getAccess(this.params.query);
+        const identity = slackApi.getUserInfo(access.access_token);
+        if (!identity) {
+        } else {
+          access.identity = identity;
+          slackApi.oauth([access]);
+        }
+      });
+    }
+}, {where: 'server'});
+
+Router.route('/portal/_slack/login', function() {
+  import('/imports/slack/slack-functions.js').then(slackApi => {
+    Router.go(slackApi.generateOauthUrl());
+  })
 });

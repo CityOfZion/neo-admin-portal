@@ -1,11 +1,19 @@
+import checkRole from '/imports/helpers/check-role.js';
+
 Meteor.publish('bots', function() {
-  return Bots.find({});
+  if (checkRole('admin')) {
+    return Bots.find({});
+  }
 });
 
 Meteor.publish('botById', function(id) {
-  return Meteor.find({processId: id});
+  if (checkRole('admin')) {
+    return Meteor.find({processId: id});
+  }
 });
 
 Meteor.publish('logsById', function(id) {
-  BotLogs.find({processId: id});
+  if (checkRole('admin')) {
+    BotLogs.find({processId: id});
+  }
 });
