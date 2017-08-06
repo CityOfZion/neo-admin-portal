@@ -30,6 +30,7 @@
 - [x] Slack invite management
 - [x] User profile management
 - [x] Bot status page
+- [x] Bot stop/start
 
 ### Version 0.3
 - [ ] Suspicious user management (find bots/spammers/etc)
