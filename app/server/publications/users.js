@@ -1,5 +1,4 @@
 Meteor.publish('userProfile', function(userId) {
-  console.log('USER', userId);
   const user = Meteor.users.find({
     "profile.identity.user.id": userId
   }, {
@@ -10,7 +9,6 @@ Meteor.publish('userProfile', function(userId) {
     }
   });
   
-  console.log(user.fetch());
   return user;
 });
 

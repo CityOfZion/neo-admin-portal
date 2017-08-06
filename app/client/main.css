@@ -9,6 +9,10 @@ html, body {
     color: #ffffff;
 }
 
+.info-box-number {
+    line-height: 1em;
+}
+
 ol.breadcrumb {
     background-color: #d2d6de !important;
     color: #777777 !important;
@@ -51,6 +55,12 @@ form {
 
 div.row {
     margin-top: 5px;
+}
+
+.neo-svg-icon {
+    background: url('/images/icon.svg') no-repeat center;
+    height: 100%;
+    width: 100%;
 }
 
 button.search {

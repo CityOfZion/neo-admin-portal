@@ -1,7 +1,33 @@
 <template name="listQuestions">
-    <div class="list-group">
-        {{#each questions}}
-            <button type="button" class="question list-group-item" data-id="{{_id}}">{{skill}}</button>
-        {{/each}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Current questions
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Skill</th>
+                    <th>Phrases</th>
+                    <th>Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each questions}}
+                    <tr>
+                        <td><button type="button" class="btn btn-warning question" data-id="{{_id}}">Edit</button></td>
+                        <td>{{skill}}</td>
+                        <td>
+                        {{#each phrases}}
+                            {{this}}<br />
+                        {{/each}}
+                        </td>
+                        <td class="word-break">{{answer}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
