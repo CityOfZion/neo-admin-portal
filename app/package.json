@@ -1,6 +1,5 @@
 {
   "name": "NEO Portal",
-  "private": true,
   "scripts": {
     "start": "meteor run"
   },
