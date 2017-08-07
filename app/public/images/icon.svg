@@ -1,0 +1,24 @@
+<svg width="68" height="78.838547" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient id="linearGradient5263">
+            <stop offset="0" id="stop5259" stop-color="#58be23"/>
+            <stop offset="1" id="stop5261" stop-opacity="0" stop-color="#58be23"/>
+        </linearGradient>
+        <linearGradient id="linearGradient5239">
+            <stop offset="0" id="stop5235" stop-color="#58be23"/>
+            <stop offset="1" id="stop5237" stop-opacity="0" stop-color="#58be23"/>
+        </linearGradient>
+        <linearGradient xlink:href="#linearGradient5239" id="linearGradient5241" x1="0.45734" y1="-0.04797" x2="0.45392" y2="1.44834"/>
+        <linearGradient xlink:href="#linearGradient5263" id="linearGradient5265" x1="0.40502" y1="0.01637" x2="0.44803" y2="1.14732"/>
+    </defs>
+    <metadata id="metadata5">image/svg+xml</metadata>
+    <g>
+        <title>Layer 1</title>
+        <g id="layer1">
+            <g id="g75"/>
+            <path d="m27.07385,26.42966l37.88545,-13.75102l-26.00532,-12.53494l-37.23065,13.93811l25.35052,12.34785z" id="path1175" stroke-width="0.26458px" stroke="#58be23" fill="#58be23"/>
+            <path d="m66.17538,14.45599l-27.40849,9.54152l0.09354,28.34393l27.03431,12.81558l0.28064,-50.70103z" id="path1177" stroke-miterlimit="4" stroke-width="0.265" fill="url(#linearGradient5241)"/>
+            <path d="m26.1384,28.207l-26.00532,-12.44139l0.18709,50.32685l25.91178,12.53494l-0.09355,-50.4204z" id="path1179" stroke-width="0.26458px" fill="url(#linearGradient5265)"/>
+        </g>
+    </g>
+</svg>

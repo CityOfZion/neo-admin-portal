@@ -1,0 +1,1 @@
+BotLogs = new Meteor.Collection('bot-logs');

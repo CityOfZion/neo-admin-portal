@@ -1,32 +1,34 @@
 export default new SimpleSchema({
   user: {
-    type: Object,
-    blackbox: true
+    type: String,
+    label: "User ID"
   },
   group: {
     type: Object,
     optional: false,
-    blackbox: true
+    blackbox: true,
+    label: "Group"
   },
   reason: {
     type: String,
-    optional: false
+    optional: false,
+    label: "Reason"
   },
   dateRequested: {
     type: Date,
-    label: 'Date requested',
     defaultValue: function() {
       return new Date();
-    }
+    },
+    label: 'Date requested'
   },
   processed: {
     type: Boolean,
-    label: 'Processed',
-    defaultValue: false
+    defaultValue: false,
+    label: 'Processed'
   },
   approved: {
     type: Boolean,
-    label: 'Approved',
-    defaultValue: false
+    defaultValue: false,
+    label: 'Approved'
   }
 });

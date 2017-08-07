@@ -1,9 +1,16 @@
 import checkRole from '/imports/helpers/check-role.js';
+const currency = require('currency-formatter');
 
 Template.registerHelper('arrayify', function (obj) {
   let result = [];
   for (let key in obj) result.push({name: key, value: obj[key]});
   return result;
+});
+
+Template.registerHelper('currency', function (amount) {
+  if(amount >= 0) {
+    return currency.format(amount, {code: 'USD'});
+  }
 });
 
 Template.registerHelper('paramUserId', function () {
