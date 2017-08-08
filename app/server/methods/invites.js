@@ -15,12 +15,13 @@ Meteor.methods({
     return false;
   },
   inviteUserToGroup(groupId, userId) {
-    const user = Meteor.users.findOne({"profile.identity.user.id": userId});
+    const user = Meteor.users.findOne({_id: userId});
     const apiKey = slackApiKey(user.profile.identity.team.id);
-    const invited = SlackAPI.groups.invite(apiKey, groupId, userId);
+    const slackUserId = user.profile.identity.user.id;
+    const invited = SlackAPI.groups.invite(apiKey, groupId, slackUserId);
     if(invited.ok) {
       Invites.update({
-        "user.profile.identity.user.id": userId,
+        "user": slackUserId,
         "group.id": groupId
       }, {$set: {
         processed: true,
