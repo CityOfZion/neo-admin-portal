@@ -1,4 +1,15 @@
-# NEO Admin Portal
+<p align="center">
+  <img 
+    src="http://res.cloudinary.com/vidsy/image/upload/v1503160820/CoZ_Icon_DARKBLUE_200x178px_oq0gxm.png" 
+    width="125px"
+  >
+</p>
+
+<h1 align="center">NEO Admin Portal</h1>
+
+<p align="center">
+  NEO Admin portal for developers
+</p>
 
 ## How to use
  - Install Meteor JS
